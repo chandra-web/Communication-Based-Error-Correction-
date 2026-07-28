@@ -204,6 +204,31 @@ def main():
     print("  Digital Modulation Simulator")
     print("  ASK | FSK | PSK")
     print("=" * 50)
+    
+    global BITS, CARRIER_FREQ, CARRIER_FREQ_2
+    
+    user_bits = input("\nEnter a binary sequence (e.g., 10110) [Press Enter for default]: ").strip()
+    if user_bits:
+        valid_bits = [int(b) for b in user_bits if b in '01']
+        if valid_bits:
+            BITS = valid_bits
+        else:
+            print("  [!] Invalid input. Using default bits.")
+
+    freq_input = input("Enter Carrier Frequency in Hz [Press Enter for default 5]: ").strip()
+    if freq_input:
+        try:
+            CARRIER_FREQ = int(freq_input)
+        except ValueError:
+            print("  [!] Invalid frequency. Using default.")
+
+    fsk_input = input("Enter FSK higher Frequency (f1) in Hz [Press Enter for default 10]: ").strip()
+    if fsk_input:
+        try:
+            CARRIER_FREQ_2 = int(fsk_input)
+        except ValueError:
+            print("  [!] Invalid frequency. Using default.")
+
     print(f"\n  Input bits   : {BITS}")
     print(f"  Carrier freq : {CARRIER_FREQ} Hz")
     print(f"  FSK f0 / f1  : {CARRIER_FREQ} Hz / {CARRIER_FREQ_2} Hz")

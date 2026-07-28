@@ -61,10 +61,13 @@ cd modulation-simulator
 pip install -r requirements.txt
 
 # Run modulation visualiser
-python3 modulation_simulator.py
+python3 src/modulation_simulator.py
 
 # Run BER vs SNR analysis
-python3 ber_analysis.py
+python3 src/ber_analysis.py
+
+# Run NLP Smart Error Correction demo
+python3 src/nlp_error_correction.py
 ```
 
 ---
@@ -101,6 +104,11 @@ Binary Input
 - [ ] Interactive Streamlit UI — change bits and frequency live
 - [ ] Constellation diagram (I-Q plot) for PSK/QAM
 - [ ] OFDM simulation (used in 4G/5G, WiFi)
+
+### 🤖 Machine Learning & NLP Extensions
+- **Semantic Communication (6G)**: Encode text into dense vector embeddings using NLP models (like Autoencoders/Transformers), transmit them over the AWGN channel using PSK/FSK, and decode at the receiver to reconstruct *meaning* rather than exact bits.
+- **NLP-Powered Smart Error Correction**: Modulate ASCII text over a high-noise channel, resulting in garbled text. Feed the garbled text into a language model (LLM/Transformer) to automatically correct errors using language context.
+- **AI Modulation Recognition**: Generate thousands of short noisy signal bursts and train a sequence model (LSTM or 1D-Transformer) to automatically classify the modulation scheme (ASK/FSK/PSK) from the raw waveform data.
 
 ---
 ## 🎯 Why This Project Stands Out
