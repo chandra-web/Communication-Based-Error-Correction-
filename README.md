@@ -1,6 +1,6 @@
-# 📡 Digital Modulation Simulator — ASK | FSK | PSK
+# 📡 Digital Modulation Simulator & NLP Error Correction
 
-A Python-based simulator that visualises the three fundamental digital modulation techniques used in modern communication systems — built from the ground up using core signal processing math.
+A Python-based simulator that visualises fundamental digital modulation techniques (ASK, FSK, PSK) and demonstrates smart NLP-powered error correction over noisy channels. Built from the ground up using core signal processing math.
 
 ---
 
@@ -76,16 +76,23 @@ python3 src/nlp_error_correction.py
 ## 🏗 Architecture
 
 ```
-Binary Input
-     │
-     ├──→ ASK: multiply bit signal × carrier
-     ├──→ FSK: switch carrier frequency per bit
-     └──→ PSK: shift carrier phase by π for bit 0
-                    │
-                    ↓
-            Matplotlib plots
-            Signal metrics (power, peak)
-            BER vs SNR (theoretical + simulated)
+Text/Binary Input
+       │
+       ├──→ ASK: multiply bit signal × carrier
+       ├──→ FSK: switch carrier frequency per bit
+       └──→ PSK: shift carrier phase by π for bit 0
+                      │
+                      ↓
+              AWGN Noisy Channel
+                      │
+                      ↓
+           Demodulation & BER Calculation
+                      │
+                      ↓
+        NLP Error Correction (Spellchecker/LLM)
+                      │
+                      ↓
+              Corrected Text Output
 ```
 
 ---
@@ -106,10 +113,16 @@ Binary Input
 - [ ] Constellation diagram (I-Q plot) for PSK/QAM
 - [ ] OFDM simulation (used in 4G/5G, WiFi)
 
-### 🤖 Machine Learning & NLP Extensions
-- **Semantic Communication (6G)**: Encode text into dense vector embeddings using NLP models (like Autoencoders/Transformers), transmit them over the AWGN channel using PSK/FSK, and decode at the receiver to reconstruct *meaning* rather than exact bits.
-- ✅ **NLP-Powered Smart Error Correction (Implemented!)**: Modulates ASCII text over a high-noise channel, resulting in garbled text. Uses a spellchecker/NLP logic to automatically correct errors using language context. (See `src/nlp_error_correction.py`)
-- **AI Modulation Recognition**: Generate thousands of short noisy signal bursts and train a sequence model (LSTM or 1D-Transformer) to automatically classify the modulation scheme (ASK/FSK/PSK) from the raw waveform data.
+## 🧠 NLP-Powered Smart Error Correction
+
+The project features a dedicated NLP extension (`src/nlp_error_correction.py`) that:
+1. Translates ASCII text into binary.
+2. Transmits it over a high-noise BPSK channel, resulting in intentional garbled text.
+3. Feeds the corrupted text into a Natural Language Processing spellchecker to automatically deduce and fix errors using language context.
+
+### 🤖 Future Machine Learning Extensions
+- **Semantic Communication (6G)**: Encode text into dense vector embeddings using NLP models (like Autoencoders/Transformers), transmit them over the AWGN channel, and decode at the receiver to reconstruct *meaning* rather than exact bits.
+- **AI Modulation Recognition**: Generate short noisy signal bursts and train a sequence model to automatically classify the modulation scheme from the raw waveform data.
 
 ---
 ## 🎯 Why This Project Stands Out
@@ -122,10 +135,3 @@ Binary Input
 - Bridges theory (Haykin) with practical simulation
 
 > This project demonstrates how communication systems behave under noise — a core concept in real-world RF and satellite systems.
-
-## 👩‍💻 Author
-
-**Vibha** · ECE @ NMIT Bengaluru  
-[LinkedIn](https://linkedin.com/in/yourprofile) · [GitHub](https://github.com/Vibha-13)
-
-> *Built from Communication Systems coursework — implementing theory in code.*
