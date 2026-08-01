@@ -17,6 +17,7 @@ A Python-based simulator that visualises the three fundamental digital modulatio
 |---|---|
 | `modulation_simulator.py` | Generates and plots ASK, FSK, PSK signals from a binary input |
 | `ber_analysis.py` | Plots BER vs SNR curves — theoretical formulas + Monte Carlo simulation |
+| `nlp_error_correction.py` | Simulates text transmission over a noisy channel and uses NLP to fix bit errors |
 
 ---
 
@@ -107,7 +108,7 @@ Binary Input
 
 ### 🤖 Machine Learning & NLP Extensions
 - **Semantic Communication (6G)**: Encode text into dense vector embeddings using NLP models (like Autoencoders/Transformers), transmit them over the AWGN channel using PSK/FSK, and decode at the receiver to reconstruct *meaning* rather than exact bits.
-- **NLP-Powered Smart Error Correction**: Modulate ASCII text over a high-noise channel, resulting in garbled text. Feed the garbled text into a language model (LLM/Transformer) to automatically correct errors using language context.
+- ✅ **NLP-Powered Smart Error Correction (Implemented!)**: Modulates ASCII text over a high-noise channel, resulting in garbled text. Uses a spellchecker/NLP logic to automatically correct errors using language context. (See `src/nlp_error_correction.py`)
 - **AI Modulation Recognition**: Generate thousands of short noisy signal bursts and train a sequence model (LSTM or 1D-Transformer) to automatically classify the modulation scheme (ASK/FSK/PSK) from the raw waveform data.
 
 ---
